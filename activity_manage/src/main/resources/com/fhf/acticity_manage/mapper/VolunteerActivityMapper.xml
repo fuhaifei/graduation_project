@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fhf.acticity_manage.mapper.VolunteerActivityMapper">
+  <resultMap id="BaseResultMap" type="com.fhf.acticity_manage.model.entity.VolunteerActivity">
+    <!--@mbg.generated-->
+    <!--@Table volunteer_activity-->
+    <id column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="site" jdbcType="VARCHAR" property="site" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="duration" jdbcType="FLOAT" property="duration" />
+    <result column="require" jdbcType="VARCHAR" property="require" />
+    <result column="plan_number" jdbcType="INTEGER" property="planNumber" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    activity_id, `name`, category, site, description, duration, `require`, plan_number, 
+    note, create_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from volunteer_activity
+    where activity_id = #{activityId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from volunteer_activity
+    where activity_id = #{activityId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="activity_id" keyProperty="activityId" parameterType="com.fhf.acticity_manage.model.entity.VolunteerActivity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into volunteer_activity (`name`, category, site, 
+      description, duration, `require`, 
+      plan_number, note, create_by
+      )
+    values (#{name,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{site,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{duration,jdbcType=FLOAT}, #{require,jdbcType=VARCHAR}, 
+      #{planNumber,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{createBy,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="activity_id" keyProperty="activityId" parameterType="com.fhf.acticity_manage.model.entity.VolunteerActivity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into volunteer_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="site != null">
+        site,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="require != null">
+        `require`,
+      </if>
+      <if test="planNumber != null">
+        plan_number,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="site != null">
+        #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=FLOAT},
+      </if>
+      <if test="require != null">
+        #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="planNumber != null">
+        #{planNumber,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhf.acticity_manage.model.entity.VolunteerActivity">
+    <!--@mbg.generated-->
+    update volunteer_activity
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="site != null">
+        site = #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=FLOAT},
+      </if>
+      <if test="require != null">
+        `require` = #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="planNumber != null">
+        plan_number = #{planNumber,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhf.acticity_manage.model.entity.VolunteerActivity">
+    <!--@mbg.generated-->
+    update volunteer_activity
+    set `name` = #{name,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      site = #{site,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=FLOAT},
+      `require` = #{require,jdbcType=VARCHAR},
+      plan_number = #{planNumber,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=BIGINT}
+    where activity_id = #{activityId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fhf.system_manage.mapper.RoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.fhf.system_manage.model.entity.RoleResource">
+    <!--@mbg.generated-->
+    <!--@Table role_resource-->
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <id column="res_id" jdbcType="BIGINT" property="resId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    role_id, res_id
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from role_resource
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and res_id = #{resId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fhf.system_manage.model.entity.RoleResource">
+    <!--@mbg.generated-->
+    insert into role_resource (role_id, res_id)
+    values (#{roleId,jdbcType=BIGINT}, #{resId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhf.system_manage.model.entity.RoleResource">
+    <!--@mbg.generated-->
+    insert into role_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="resId != null">
+        res_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="resId != null">
+        #{resId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
