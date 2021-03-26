@@ -1,4 +1,4 @@
-package com.fhf.acticity_manage.mapper;
+package com.fhf.activity_manage.mapper;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

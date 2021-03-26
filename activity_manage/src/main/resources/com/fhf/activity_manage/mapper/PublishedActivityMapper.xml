@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fhf.activity_manage.mapper.PublishedActivityMapper">
+  <resultMap id="BaseResultMap" type="com.fhf.activity_manage.model.entity.PublishedActivity">
+    <!--@mbg.generated-->
+    <!--@Table published_activity-->
+    <id column="publish_id" jdbcType="BIGINT" property="publishId" />
+    <result column="belong_to" jdbcType="BIGINT" property="belongTo" />
+    <result column="publisher" jdbcType="BIGINT" property="publisher" />
+    <result column="charge_by" jdbcType="BIGINT" property="chargeBy" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="apply_end_time" jdbcType="DATE" property="applyEndTime" />
+    <result column="signup_number" jdbcType="INTEGER" property="signupNumber" />
+    <result column="plan_number" jdbcType="INTEGER" property="planNumber" />
+    <result column="qq_group" jdbcType="VARCHAR" property="qqGroup" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    publish_id, belong_to, publisher, charge_by, start_time, endTime, apply_end_time, 
+    signup_number, plan_number, qq_group, note, status
+  </sql>
+  <select id="countPublishRecord" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM published_activity
+    where belong_to = #{id}
+  </select>
+</mapper>
