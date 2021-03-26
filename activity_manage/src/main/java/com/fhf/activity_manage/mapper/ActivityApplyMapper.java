@@ -1,5 +1,6 @@
 package com.fhf.activity_manage.mapper;
 
+import com.fhf.activity_manage.model.entity.ActivityApply;
 import com.fhf.activity_manage.model.entity.ActivityRecord;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,5 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description: 
  */
 @Mapper
-public interface ActivityApplyMapper extends BaseMapper<ActivityRecord> {
+public interface ActivityApplyMapper extends BaseMapper<ActivityApply> {
+    public void examineApply(ActivityApply activityApply);
 }

@@ -20,5 +20,33 @@
     `status`
   </sql>
 
+  <select id="getAllParticipation" resultType="com.fhf.activity_manage.model.entity.DTO.ParticipationDto" parameterType="Long">
+    SELECT activity_record.record_id as recordId , u.name as userName,status
+    FROM activity_record left join user u on u.id = activity_record.participant
+    where activity_record.belong_activity = #{publishActivityId}
+  </select>
 
+  <select id="getHistory" resultType="com.fhf.activity_manage.model.entity.DTO.ActivityRecordQueryResult" parameterType="com.fhf.activity_manage.model.entity.DTO.ActivityRecordQuery">
+    SELECT va.name as name,va.category as category,va.site as site,va.description as description,activity_record.time as time ,
+    activity_record.evaluation as evaluation,score,u.name as appraiser,activity_record.note,activity_record.status
+    from activity_record
+    left join published_activity pa on pa.publish_id = activity_record.belong_activity
+    left join volunteer_activity va on pa.belong_to = va.activity_id
+    left join user u on activity_record.appraiser = u.id
+
+    where activity_record.status > -1
+    <if test="name!=null and name!=''">
+      and va.name like concat('%',#{name},'%')
+    </if >
+    <if test="category!=null and category!=''">
+      and va.category like concat('%',#{category},'%')
+    </if >
+    <if test="startTime!=null">
+      and pa.start_time &gt;= #{startTime}
+    </if >
+    <if test="endTime!=null">
+      and pa.endTime &lt;= #{endTime}
+    </if >
+
+  </select>
 </mapper>

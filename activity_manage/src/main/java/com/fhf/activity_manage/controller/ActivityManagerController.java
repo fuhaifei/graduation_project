@@ -51,4 +51,11 @@ public class ActivityManagerController {
         activityManageService.publishActivity(activityPublishDto);
     }
 
+    /**
+     * 结束志愿活动
+     * */
+    @PostMapping("/finish_activity")
+    public String finishActivity(@RequestBody Long publishActivityId){
+        return activityManageService.finishActivity(publishActivityId);
+    }
 }

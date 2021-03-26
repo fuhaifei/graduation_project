@@ -2,6 +2,7 @@ package com.fhf.activity_manage.model.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -17,6 +18,7 @@ import java.util.Date;
     */
 @Data
 public class PublishedActivity {
+    @Id
     private Long publishId;
 
     private Long belongTo;
@@ -68,6 +70,9 @@ public class PublishedActivity {
 
     /**
      * 状态
+     * 0 发布
+     * 1 人数已满
+     * 2 结束
      * */
     private Integer status;
 

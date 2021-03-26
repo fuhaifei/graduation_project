@@ -1,44 +1,31 @@
-package com.fhf.activity_manage.model.entity;
+package com.fhf.activity_manage.model.entity.DTO;
 
 import lombok.Data;
-
-import javax.persistence.Id;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
+ *
  * @Auther: 付海飞
- * @Date: 2021/03/24/16:11
- * @Description: 
- */
-
-/**
- * 志愿活动申请
+ * @Date: 2021/03/26/14:57
+ * @Description:
  */
 @Data
-public class ActivityApply {
+public class ApplyExamineDto {
     /**
      * 申请Id
      */
-    @Id
     private Long applyId;
-
-    /**
-     * 申请时间
-     */
-    private LocalDateTime applyTime;
-
-    /**
-     * 申请活动ID
-     */
-    private Long applyFor;
 
     /**
      * 申请人
      */
     private Long applyBy;
+
+    /**
+     * 申请活动ID
+     */
+    private Long applyFor;
 
     /**
      * 批准人
@@ -47,9 +34,6 @@ public class ActivityApply {
 
     /**
      * 状态(是否已通过)
-     * 0 等待审核
-     * 1 通过
-     * 2 未通过
      */
     private Integer status;
 

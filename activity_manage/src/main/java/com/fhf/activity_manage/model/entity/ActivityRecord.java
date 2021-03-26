@@ -8,6 +8,8 @@ package com.fhf.activity_manage.model.entity;
  * @Description: 
  */
 
+import javax.persistence.Id;
+
 /**
  * 参与志愿活动记录
  */
@@ -15,6 +17,7 @@ public class ActivityRecord {
     /**
      * 记录Id
      */
+    @Id
     private Long recordId;
 
     /**
@@ -54,6 +57,9 @@ public class ActivityRecord {
 
     /**
      * 状态
+     * 0 未结束
+     * 1 已评价
+     * 2 未参与
      */
     private Integer status;
 

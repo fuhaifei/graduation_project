@@ -1,7 +1,9 @@
 package com.fhf.activity_manage.service.impl;
 
+import com.fhf.activity_manage.mapper.ActivityRecordMapper;
 import com.fhf.activity_manage.mapper.PublishedActivityMapper;
 import com.fhf.activity_manage.mapper.VolunteerActivityMapper;
+import com.fhf.activity_manage.model.entity.ActivityRecord;
 import com.fhf.activity_manage.model.entity.DTO.*;
 import com.fhf.activity_manage.model.entity.PublishedActivity;
 import com.fhf.activity_manage.model.entity.VolunteerActivity;
@@ -28,6 +30,8 @@ public class ActivityManageServiceImpl implements ActivityManageService {
     public VolunteerActivityMapper volunteerActivityMapper;
     @Resource
     public PublishedActivityMapper publishedActivityMapper;
+    @Resource
+    public ActivityRecordMapper activityRecordMapper;
 
     public List<ActivityQueryResultDto> getActivity(ActivityQuery activityQuery){
         Example example = new Example(VolunteerActivity.class);
@@ -78,8 +82,26 @@ public class ActivityManageServiceImpl implements ActivityManageService {
     @Override
     public void publishActivity(ActivityPublishDto activityPublishDto) {
         PublishedActivity publishedActivity = BeanUtil.copyProperties(activityPublishDto,PublishedActivity.class);
-        System.out.println(activityPublishDto);
-        System.out.println(publishedActivity);
         publishedActivityMapper.insertSelective(publishedActivity);
     }
+
+    @Override
+    public String finishActivity(Long publishActivityId) {
+        //首先查询参与记录是否均评价完成
+        Example example = new Example(ActivityRecord.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("belongActivity",publishActivityId);
+        criteria.andEqualTo("status",0);
+        int total = activityRecordMapper.selectCountByExample(example);
+        if(total != 0){
+            return "评价完成才能结束活动";
+        }
+        //设置活动状态为已结束
+        PublishedActivity publishedActivity = new PublishedActivity();
+        publishedActivity.setPublishId(publishActivityId);
+        publishedActivity.setStatus(2);
+        publishedActivityMapper.updateByPrimaryKeySelective(publishedActivity);
+        return null;
+    }
+
 }

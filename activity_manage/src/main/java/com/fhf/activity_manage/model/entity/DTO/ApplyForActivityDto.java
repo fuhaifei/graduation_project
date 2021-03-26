@@ -1,28 +1,26 @@
-package com.fhf.activity_manage.model.entity;
+package com.fhf.activity_manage.model.entity.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
+ *
  * @Auther: 付海飞
- * @Date: 2021/03/24/16:11
- * @Description: 
- */
-
-/**
- * 志愿活动申请
+ * @Date: 2021/03/26/10:50
+ * @Description: 申请志愿活动
  */
 @Data
-public class ActivityApply {
+public class ApplyForActivityDto {
+
     /**
      * 申请Id
      */
-    @Id
     private Long applyId;
 
     /**
@@ -47,9 +45,6 @@ public class ActivityApply {
 
     /**
      * 状态(是否已通过)
-     * 0 等待审核
-     * 1 通过
-     * 2 未通过
      */
     private Integer status;
 
@@ -57,4 +52,5 @@ public class ActivityApply {
      * 备注信息
      */
     private String note;
+
 }

@@ -43,4 +43,10 @@ public interface ActivityManageService {
      * @param activityPublishDto 发布活动信息
      * */
     public void publishActivity(ActivityPublishDto activityPublishDto);
+
+    /**
+     * 完成志愿活动服务
+     *
+     * */
+    public String finishActivity(Long publishActivityId);
 }

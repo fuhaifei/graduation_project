@@ -27,4 +27,28 @@
     FROM published_activity
     where belong_to = #{id}
   </select>
+
+  <select id="queryPublishActivity" parameterType="com.fhf.activity_manage.model.entity.PublishedActivity" resultType="com.fhf.activity_manage.model.entity.DTO.PublishActivityQueryResult">
+    SELECT publish_id as publishid,belong_to as belongto,charge_by as chargeby,start_time as starttime,endTime as endtime,
+            apply_end_time as applyendtime,signup_number as signupnumber,va.plan_number as plannumber,qq_group as qqgroup,
+            published_activity.note,publisher
+    from published_activity
+    left join volunteer_activity va on va.activity_id = published_activity.belong_to
+    where status > -1
+    <if test="name!=null and name!=''">
+     and name like concat('%',#{name},'%')
+    </if >
+    <if test="category!=null and category!=''">
+       and category like concat('%',#{category},'%')
+    </if >
+    <if test="startTime!=null">
+      and start_time &gt;= #{startTime}
+    </if >
+    <if test="endTime!=null">
+      and endTime &lt;= #{endTime}
+    </if >
+    <if test="isEnd == 1">
+      and apply_end_time  &lt; NOW()
+    </if >
+  </select>
 </mapper>
