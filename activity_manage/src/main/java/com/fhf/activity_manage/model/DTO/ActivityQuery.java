@@ -1,4 +1,4 @@
-package com.fhf.activity_manage.model.entity.DTO;
+package com.fhf.activity_manage.model.DTO;
 
 import lombok.Data;
 

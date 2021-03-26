@@ -1,7 +1,6 @@
 package com.fhf.activity_manage.mapper;
 
 import com.fhf.activity_manage.model.entity.ActivityApply;
-import com.fhf.activity_manage.model.entity.ActivityRecord;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

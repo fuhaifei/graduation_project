@@ -28,7 +28,7 @@
     where belong_to = #{id}
   </select>
 
-  <select id="queryPublishActivity" parameterType="com.fhf.activity_manage.model.entity.PublishedActivity" resultType="com.fhf.activity_manage.model.entity.DTO.PublishActivityQueryResult">
+  <select id="queryPublishActivity" parameterType="com.fhf.activity_manage.model.entity.PublishedActivity" resultType="com.fhf.activity_manage.model.DTO.PublishActivityQueryResult">
     SELECT publish_id as publishid,belong_to as belongto,charge_by as chargeby,start_time as starttime,endTime as endtime,
             apply_end_time as applyendtime,signup_number as signupnumber,va.plan_number as plannumber,qq_group as qqgroup,
             published_activity.note,publisher

@@ -1,4 +1,4 @@
-package com.fhf.activity_manage.model.entity.DTO;
+package com.fhf.activity_manage.model.DTO;
 
 import lombok.Data;
 
@@ -9,32 +9,15 @@ import javax.persistence.Id;
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/26/17:06
+ * @Date: 2021/03/26/16:17
  * @Description:
  */
 @Data
-public class ActivityRecordQueryResult {
-
-
+public class ParticipationExamineDto {
     /**
-     * 活动名称
+     * 记录Id
      */
-    private String name;
-
-    /**
-     * 活动类型
-     */
-    private String category;
-
-    /**
-     * 活动地点
-     */
-    private String site;
-
-    /**
-     * 活动描述
-     */
-    private String description;
+    private Long recordId;
 
     /**
      * 志愿时长
@@ -54,7 +37,7 @@ public class ActivityRecordQueryResult {
     /**
      * 评定人
      */
-    private String appraiser;
+    private Long appraiser;
 
     /**
      * 备注

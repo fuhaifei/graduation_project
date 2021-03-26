@@ -1,4 +1,4 @@
-package com.fhf.activity_manage.model.entity.DTO;
+package com.fhf.activity_manage.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/26/17:09
+ * @Date: 2021/03/26/9:16
  * @Description:
  */
 @Data
-public class ActivityRecordQuery {
+public class PublishActivityQuery {
     /**
      * 活动名称
      */
@@ -35,6 +35,7 @@ public class ActivityRecordQuery {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime endTime;
+
     /**
      * 是否截至报名
      * */

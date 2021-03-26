@@ -1,6 +1,6 @@
 package com.fhf.activity_manage.controller;
 
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.model.DTO.*;
 import com.fhf.activity_manage.service.ActivityManageService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

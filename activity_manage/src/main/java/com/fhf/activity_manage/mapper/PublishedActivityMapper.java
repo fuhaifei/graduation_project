@@ -1,7 +1,7 @@
 package com.fhf.activity_manage.mapper;
 
-import com.fhf.activity_manage.model.entity.DTO.PublishActivityQuery;
-import com.fhf.activity_manage.model.entity.DTO.PublishActivityQueryResult;
+import com.fhf.activity_manage.model.DTO.PublishActivityQuery;
+import com.fhf.activity_manage.model.DTO.PublishActivityQueryResult;
 import com.fhf.activity_manage.model.entity.PublishedActivity;
 import org.apache.ibatis.annotations.Mapper;
 

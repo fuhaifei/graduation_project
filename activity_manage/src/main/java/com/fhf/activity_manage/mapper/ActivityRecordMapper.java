@@ -1,8 +1,8 @@
 package com.fhf.activity_manage.mapper;
 import com.fhf.activity_manage.model.entity.ActivityRecord;
-import com.fhf.activity_manage.model.entity.DTO.ActivityRecordQuery;
-import com.fhf.activity_manage.model.entity.DTO.ActivityRecordQueryResult;
-import com.fhf.activity_manage.model.entity.DTO.ParticipationDto;
+import com.fhf.activity_manage.model.DTO.ActivityRecordQuery;
+import com.fhf.activity_manage.model.DTO.ActivityRecordQueryResult;
+import com.fhf.activity_manage.model.DTO.ParticipationDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -5,7 +5,7 @@ import com.fhf.activity_manage.mapper.ActivityRecordMapper;
 import com.fhf.activity_manage.mapper.PublishedActivityMapper;
 import com.fhf.activity_manage.model.entity.ActivityApply;
 import com.fhf.activity_manage.model.entity.ActivityRecord;
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.model.DTO.*;
 import com.fhf.activity_manage.model.entity.PublishedActivity;
 import com.fhf.activity_manage.service.VolunteerParticipationService;
 import com.fhf.activity_manage.util.BeanUtil;

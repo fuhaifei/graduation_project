@@ -1,22 +1,20 @@
-package com.fhf.activity_manage.model.entity.DTO;
+package com.fhf.activity_manage.model.DTO;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/24/16:39
- * @Description: 添加志愿活动DTO
+ * @Date: 2021/03/26/17:06
+ * @Description:
  */
 @Data
-public class ActivityAddDto {
+public class ActivityRecordQueryResult {
+
 
     /**
      * 活动名称
@@ -41,17 +39,22 @@ public class ActivityAddDto {
     /**
      * 志愿时长
      */
-    private Double duration;
+    private Double time;
 
     /**
-     * 参与要求
+     * 评价
      */
-    private String require;
+    private String evaluation;
 
     /**
-     * 计划招收人数
+     * 评分
      */
-    private Integer planNumber;
+    private Integer score;
+
+    /**
+     * 评定人
+     */
+    private String appraiser;
 
     /**
      * 备注
@@ -59,8 +62,10 @@ public class ActivityAddDto {
     private String note;
 
     /**
-     * 创建人
+     * 状态
+     * 0 未结束
+     * 1 已评价
+     * 2 未参与
      */
-    private Long createBy;
-
+    private Integer status;
 }

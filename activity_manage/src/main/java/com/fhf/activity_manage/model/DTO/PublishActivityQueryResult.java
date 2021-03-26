@@ -1,31 +1,57 @@
-package com.fhf.activity_manage.model.entity.DTO;
+package com.fhf.activity_manage.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/26/8:38
- * @Description: 发布志愿活动类
+ * @Date: 2021/03/26/9:20
+ * @Description:
  */
-@Data
-public class ActivityPublishDto {
-    private Long belongTo;
+public class PublishActivityQueryResult {
     /**
-     * 发布者
-     */
-    private Long publisher;
+     * 发布信息ID
+     * */
+    private Long publishId;
 
     /**
-     * 负责人
+     * 活动id
      */
-    private Long chargeBy;
+    private Long activityId;
+
+    /**
+     * 活动名称
+     */
+    private String name;
+
+    /**
+     * 活动类型
+     */
+    private String category;
+
+    /**
+     * 活动地点
+     */
+    private String site;
+
+    /**
+     * 活动描述
+     */
+    private String description;
+
+    /**
+     * 志愿时长
+     */
+    private Double duration;
+
+    /**
+     * 参与要求
+     */
+    private String require;
 
     /**
      * 开始时间
@@ -44,6 +70,11 @@ public class ActivityPublishDto {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime applyEndTime;
+
+    /**
+     * 报名人数
+     */
+    private Integer signupNumber;
 
     /**
      * 计划人数
