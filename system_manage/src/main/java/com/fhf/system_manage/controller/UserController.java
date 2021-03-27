@@ -7,6 +7,8 @@ import com.fhf.system_manage.model.dto.UserUpdateDto;
 import com.fhf.system_manage.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,26 +21,28 @@ import java.util.List;
  * @Date: 2021/03/26/19:12
  * @Description:
  */
+@RestController
+@RequestMapping("/system_manage")
 public class UserController {
     @Resource
-    com.fhf.system_manage.service.UserService UserService;
+    UserService UserService;
     @PostMapping("/publish_user")
-    public void addUser(@RequestBody UserAddDto UserAddDto){
-        UserService.addUser(UserAddDto);
+    public void addUser(@RequestBody UserAddDto userAddDto){
+        UserService.addUser(userAddDto);
     }
 
     @PostMapping("/delete_user")
-    public void deleteUser(@RequestBody Long UserId){
-        UserService.deleteUser(UserId);
+    public void deleteUser(@RequestBody Long userId){
+        UserService.deleteUser(userId);
     }
 
     @PostMapping("/update_user")
-    public void updateUser(@RequestBody UserUpdateDto UserUpdateDto){
-        UserService.updateUser(UserUpdateDto);
+    public void updateUser(@RequestBody UserUpdateDto userUpdateDto){
+        UserService.updateUser(userUpdateDto);
     }
 
     @PostMapping("/query_user")
-    public List<UserQueryResultDto> queryUser(@RequestBody UserQueryDto UserQueryDto){
-        return UserService.queryUser(UserQueryDto);
+    public List<UserQueryResultDto> queryUser(@RequestBody UserQueryDto userQueryDto){
+        return UserService.queryUser(userQueryDto);
     }
 }

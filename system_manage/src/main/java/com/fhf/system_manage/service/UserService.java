@@ -18,25 +18,25 @@ import java.util.List;
 public interface UserService {
     /**
      * 新增资源信息
-     * @param UserAddDto 新增 资源信息
+     * @param userAddDto 新增 资源信息
      * */
-    public void addUser(UserAddDto UserAddDto);
+    public void addUser(UserAddDto userAddDto);
 
     /**
      * 删除资源信息
-     * @param UserId  资源Id
+     * @param userId  资源Id
      * */
-    public void deleteUser(Long UserId);
+    public void deleteUser(Long userId);
 
     /**
      * 更新资源信息
-     * @param  UserUpdateDto 更新资源信息
+     * @param  userUpdateDto 更新资源信息
      * */
-    public void updateUser(UserUpdateDto UserUpdateDto);
+    public void updateUser(UserUpdateDto userUpdateDto);
 
     /**
      * 查询资源信息
-     * @param UserQueryDto 资源查询信息
+     * @param userQueryDto 资源查询信息
      * */
-    public List<UserQueryResultDto> queryUser(UserQueryDto UserQueryDto);
+    public List<UserQueryResultDto> queryUser(UserQueryDto userQueryDto);
 }

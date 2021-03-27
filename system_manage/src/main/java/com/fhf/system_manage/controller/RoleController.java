@@ -7,6 +7,8 @@ import com.fhf.system_manage.model.dto.RoleUpdateDto;
 import com.fhf.system_manage.service.RoleService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,11 +21,13 @@ import java.util.List;
  * @Date: 2021/03/26/19:12
  * @Description:
  */
+@RestController
+@RequestMapping("/system_manage")
 public class RoleController {
 
     @Resource
     RoleService RoleService;
-    @PostMapping("/publish_role")
+    @PostMapping("/add_role")
     public void addRole(@RequestBody RoleAddDto RoleAddDto){
         RoleService.addRole(RoleAddDto);
     }

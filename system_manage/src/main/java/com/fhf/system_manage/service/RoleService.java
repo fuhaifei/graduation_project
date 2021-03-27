@@ -19,25 +19,25 @@ public interface RoleService {
 
     /**
      * 新增资源信息
-     * @param RoleAddDto 新增 资源信息
+     * @param roleAddDto 新增 资源信息
      * */
-    public void addRole(RoleAddDto RoleAddDto);
+    public void addRole(RoleAddDto roleAddDto);
 
     /**
      * 删除资源信息
-     * @param RoleId  资源Id
+     * @param roleId  资源Id
      * */
-    public void deleteRole(Long RoleId);
+    public void deleteRole(Long roleId);
 
     /**
      * 更新资源信息
-     * @param  RoleUpdateDto 更新资源信息
+     * @param  roleUpdateDto 更新资源信息
      * */
-    public void updateRole(RoleUpdateDto RoleUpdateDto);
+    public void updateRole(RoleUpdateDto roleUpdateDto);
 
     /**
      * 查询资源信息
-     * @param RoleQueryDto 资源查询信息
+     * @param roleQueryDto 资源查询信息
      * */
-    public List<RoleQueryResultDto> queryRole(RoleQueryDto RoleQueryDto);
+    public List<RoleQueryResultDto> queryRole(RoleQueryDto roleQueryDto);
 }

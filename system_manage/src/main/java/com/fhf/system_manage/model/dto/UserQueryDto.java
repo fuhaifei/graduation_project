@@ -2,6 +2,8 @@ package com.fhf.system_manage.model.dto;
 
 import lombok.Data;
 
+import javax.persistence.Id;
+
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
@@ -12,4 +14,14 @@ import lombok.Data;
  */
 @Data
 public class UserQueryDto {
+    /**
+     * 用户id
+     */
+    private Long id;
+
+    /**
+     * 名字
+     */
+    private String name;
+
 }
