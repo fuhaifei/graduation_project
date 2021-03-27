@@ -5,7 +5,7 @@
     <!--@mbg.generated-->
     <!--@Table testdatabase.user_role-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <id column="r_id" jdbcType="BIGINT" property="rId" />
+    <id column="r_id" jdbcType="BIGINT" property="rid" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->

@@ -21,7 +21,10 @@ public class UserQueryResultDto {
      */
     @Id
     private Long id;
-
+    /**
+     * 用户角色
+     * */
+    private String role;
     /**
      * 密码
      */

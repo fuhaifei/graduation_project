@@ -2,6 +2,8 @@ package com.fhf.system_manage.model.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
+
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
@@ -23,5 +25,6 @@ public class UserRole {
     /**
      * 角色id
      */
-    private Long rId;
+    @Column(name = "r_id")
+    private Long rid;
 }

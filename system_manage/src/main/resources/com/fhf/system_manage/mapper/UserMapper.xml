@@ -19,4 +19,25 @@
     <!--@mbg.generated-->
     id, `password`, `name`, profile_picture, sex, birthday, tel, email, other, remark
   </sql>
+
+  <select id="getAllUser" resultType="com.fhf.system_manage.model.dto.UserQueryResultDto"
+          parameterType="com.fhf.system_manage.model.dto.UserQueryDto">
+    SELECT user.id,r.name as role,password,user.name,user.profile_picture as profilePicture,
+    user.birthday,user.email,user.other,
+    user.sex,user.tel,user.remark
+    FROM user
+    LEFT OUTER JOIN  user_role ur ON user.id = ur.id
+    LEFT OUTER JOIN role r on ur.r_id = r.id
+    WHERE user.id > -1
+    <if test="id != null">
+      AND user.id = #{id}
+    </if>
+    <if test="name != null">
+      AND user.name LIKE concat('%',#{name},'%')
+    </if>
+    <if test="role != null">
+      AND r.id = #{role}
+    </if>
+
+  </select>
 </mapper>

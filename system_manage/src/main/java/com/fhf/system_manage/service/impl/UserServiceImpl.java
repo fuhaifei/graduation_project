@@ -51,19 +51,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserQueryResultDto> queryUser(UserQueryDto userQueryDto) {
-        Example example = new Example(User.class);
-        Example.Criteria criteria = example.createCriteria();
-        if(userQueryDto.getId() != null){
-            criteria.andEqualTo("id",userQueryDto.getId());
-        }
-        if(userQueryDto.getName() != null){
-            criteria.andLike("name","%"+userQueryDto.getName()+"%");
-        }
-        List<User> users = userMapper.selectByExample(example);
-        List<UserQueryResultDto> result = new ArrayList<>();
-        for(User user:users){
-            result.add(BeanUtil.copyProperties(user,UserQueryResultDto.class));
-        }
-        return result;
+        return userMapper.getAllUser(userQueryDto);
     }
 }

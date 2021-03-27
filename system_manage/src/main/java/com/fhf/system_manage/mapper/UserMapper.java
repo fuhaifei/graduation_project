@@ -1,6 +1,10 @@
 package com.fhf.system_manage.mapper;
 
+import com.fhf.system_manage.model.dto.UserQueryDto;
+import com.fhf.system_manage.model.dto.UserQueryResultDto;
 import com.fhf.system_manage.model.entity.User;import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * Created with IDEA
@@ -12,4 +16,6 @@ import com.fhf.system_manage.model.entity.User;import org.apache.ibatis.annotati
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
+
+    public List<UserQueryResultDto> getAllUser(UserQueryDto userQueryDto);
 }
