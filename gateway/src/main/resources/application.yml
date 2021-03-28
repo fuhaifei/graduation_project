@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: system_gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: activity_manage
+          uri: http://localhost:8082
+          predicates:
+            - Path=/system_manage/**
+#          filters:
+#            - StripPrefix=1
+        - id: system_namage
+          uri: http://localhost:8081
+          predicates:
+            - Path=/activity_manage/**
+#          filters:
+#            - StripPrefix=1
