@@ -2,6 +2,8 @@ package com.fhf.system_manage.mapper;
 
 import com.fhf.system_manage.model.entity.Resource;import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
@@ -12,4 +14,6 @@ import com.fhf.system_manage.model.entity.Resource;import org.apache.ibatis.anno
  */
 @Mapper
 public interface ResourceMapper extends BaseMapper<Resource> {
+
+    public List<Long> getAllRoles(Long id);
 }

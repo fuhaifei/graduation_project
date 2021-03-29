@@ -19,7 +19,7 @@ import javax.persistence.Id;
 public class Resource {
     @Id
     private Long id;
-
+    private String component;
     /**
      * 资源名
      */
@@ -39,6 +39,11 @@ public class Resource {
      * 资源路径
      */
     private String url;
+
+    /**
+     * 资源路径
+     * */
+    private String path;
 
     /**
      * 资源类型
