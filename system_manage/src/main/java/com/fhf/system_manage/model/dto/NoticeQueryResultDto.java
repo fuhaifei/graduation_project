@@ -1,9 +1,11 @@
 package com.fhf.system_manage.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created with IDEA
@@ -40,7 +42,8 @@ public class NoticeQueryResultDto {
      * 创建时间
      */
 
-    private LocalDate publishTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime publishTime;
 
     /**
      * 发布人

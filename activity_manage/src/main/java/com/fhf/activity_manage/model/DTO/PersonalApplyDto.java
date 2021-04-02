@@ -10,12 +10,11 @@ import java.time.LocalDateTime;
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/26/17:09
+ * @Date: 2021/03/31/15:49
  * @Description:
  */
 @Data
-public class ActivityRecordQuery {
-    private Long participantId;
+public class PersonalApplyDto {
     /**
      * 活动名称
      */
@@ -25,19 +24,27 @@ public class ActivityRecordQuery {
      */
     private String category;
 
-    /**
-     * 开始时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private LocalDateTime startTime;
+    private String site;
 
     /**
-     * 结束时间
+     * 申请时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private LocalDateTime endTime;
+    private LocalDateTime applyTime;
+
     /**
-     * 是否截至报名
-     * */
-    private  int isEnd;
+     * 批准人
+     */
+    private String approveBy;
+
+    /**
+     * 状态(是否已通过)
+     */
+    private Integer status;
+
+    /**
+     * 备注信息
+     */
+    private String note;
+
 }

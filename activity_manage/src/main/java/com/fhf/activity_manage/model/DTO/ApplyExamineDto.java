@@ -17,15 +17,6 @@ public class ApplyExamineDto {
      */
     private Long applyId;
 
-    /**
-     * 申请人
-     */
-    private Long applyBy;
-
-    /**
-     * 申请活动ID
-     */
-    private Long applyFor;
 
     /**
      * 批准人

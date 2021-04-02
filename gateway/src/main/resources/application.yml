@@ -11,15 +11,15 @@ spring:
     gateway:
       routes:
         - id: activity_manage
-          uri: http://localhost:8082
-          predicates:
-            - Path=/system_manage/**
-#          filters:
-#            - StripPrefix=1
-        - id: system_namage
           uri: http://localhost:8081
           predicates:
             - Path=/activity_manage/**
+#          filters:
+#            - StripPrefix=1
+        - id: system_manage
+          uri: http://localhost:8082
+          predicates:
+            - Path=/system_manage/**
 #          filters:
 #            - StripPrefix=1
         - id: login_service

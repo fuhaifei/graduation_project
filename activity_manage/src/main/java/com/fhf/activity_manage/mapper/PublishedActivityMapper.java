@@ -20,4 +20,6 @@ public interface PublishedActivityMapper extends BaseMapper<PublishedActivity> {
     public Integer countPublishRecord(Long id);
 
     public List<PublishActivityQueryResult> queryPublishActivity(PublishActivityQuery publishActivityQuery);
+
+    public void updateSignupNumber(Long id);
 }

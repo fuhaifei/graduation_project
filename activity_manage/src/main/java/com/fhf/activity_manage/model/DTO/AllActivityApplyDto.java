@@ -4,18 +4,27 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
  *
  * @Auther: 付海飞
- * @Date: 2021/03/26/17:09
+ * @Date: 2021/04/01/16:32
  * @Description:
  */
+
 @Data
-public class ActivityRecordQuery {
-    private Long participantId;
+public class AllActivityApplyDto {
+    /**
+     * 申请Id
+     * */
+    private Long applyId;
+    /**
+     * 申请人Id
+     * */
+    private Long applyBy;
     /**
      * 活动名称
      */
@@ -26,18 +35,24 @@ public class ActivityRecordQuery {
     private String category;
 
     /**
-     * 开始时间
+     * 申请时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private LocalDateTime startTime;
+    private LocalDateTime applyTime;
 
     /**
-     * 结束时间
+     * 生日
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private LocalDateTime endTime;
+    private Date birthday;
+
     /**
-     * 是否截至报名
-     * */
-    private  int isEnd;
+     * 电话
+     */
+    private String tel;
+
+    /**
+     * 名字
+     */
+    private String userName;
+
 }

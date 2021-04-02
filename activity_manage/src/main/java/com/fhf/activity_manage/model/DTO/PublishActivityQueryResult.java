@@ -1,6 +1,7 @@
 package com.fhf.activity_manage.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
  * @Date: 2021/03/26/9:20
  * @Description:
  */
+@Data
 public class PublishActivityQueryResult {
     /**
      * 发布信息ID
@@ -90,4 +92,6 @@ public class PublishActivityQueryResult {
      * 备注
      */
     private String note;
+
+    private Integer status;
 }

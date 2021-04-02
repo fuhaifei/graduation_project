@@ -16,6 +16,10 @@ import java.time.LocalDateTime;
 @Data
 public class PublishActivityQuery {
     /**
+     * 查询人
+     * */
+    public Long userId;
+    /**
      * 活动名称
      */
     private String name;

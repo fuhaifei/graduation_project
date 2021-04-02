@@ -29,9 +29,9 @@
   </select>
 
   <select id="queryPublishActivity" parameterType="com.fhf.activity_manage.model.entity.PublishedActivity" resultType="com.fhf.activity_manage.model.DTO.PublishActivityQueryResult">
-    SELECT publish_id as publishid,belong_to as belongto,charge_by as chargeby,start_time as starttime,endTime as endtime,
+    SELECT publish_id as publishId,name as name,category,belong_to as belongto,charge_by as chargeby,start_time as starttime,endTime as endtime,
             apply_end_time as applyendtime,signup_number as signupnumber,va.plan_number as plannumber,qq_group as qqgroup,
-            published_activity.note,publisher
+            published_activity.note as note,publisher,`require`,site,duration,description,activity_id as activityId,status
     from published_activity
     left join volunteer_activity va on va.activity_id = published_activity.belong_to
     where status > -1
@@ -50,5 +50,12 @@
     <if test="isEnd == 1">
       and apply_end_time  &lt; NOW()
     </if >
+    <if test="userId != null">
+    and publish_id not in (SELECT apply_for from activity_apply where apply_by = #{userId})
+    </if>
   </select>
+
+  <update id="updateSignupNumber" parameterType="Long">
+    update published_activity set signup_number = signup_number + 1 where publish_id = #{id}
+  </update>
 </mapper>

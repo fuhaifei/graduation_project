@@ -28,7 +28,7 @@
 
   <select id="getHistory" resultType="com.fhf.activity_manage.model.DTO.ActivityRecordQueryResult" parameterType="com.fhf.activity_manage.model.DTO.ActivityRecordQuery">
     SELECT va.name as name,va.category as category,va.site as site,va.description as description,activity_record.time as time ,
-    activity_record.evaluation as evaluation,score,u.name as appraiser,activity_record.note,activity_record.status
+    activity_record.evaluation as evaluation,score,u.name as appraiser,activity_record.note as note,activity_record.status
     from activity_record
     left join published_activity pa on pa.publish_id = activity_record.belong_activity
     left join volunteer_activity va on pa.belong_to = va.activity_id
@@ -47,6 +47,31 @@
     <if test="endTime!=null">
       and pa.endTime &lt;= #{endTime}
     </if >
+    and participant = #{participantId}
+  </select>
 
+  <select id="queryVolunteer" resultType="com.fhf.activity_manage.model.DTO.VolunteerDetailDto" parameterType="Long">
+    SELECT student_id as studentId,id_card as Idcard,college,major,habit,remark FROM volunteer
+    WHERE user_id = #{id}
+  </select>
+
+  <select id="queryToEvaluation" resultType="com.fhf.activity_manage.model.DTO.RecordToEvaluation" parameterType="com.fhf.activity_manage.model.DTO.RecordToEvaluationQuery">
+    SELECT va.name as name,va.category as category,va.site as site,va.description as description,record_id as  recordId,
+    u.name as username,duration
+    from activity_record
+    left join published_activity pa on pa.publish_id = activity_record.belong_activity
+    left join volunteer_activity va on pa.belong_to = va.activity_id
+    left join user u on activity_record.participant = u.id
+    where activity_record.status > -1
+    <if test="name!=null and name!=''">
+      and va.name like concat('%',#{name},'%')
+    </if >
+    <if test="category!=null and category!=''">
+      and va.category like concat('%',#{category},'%')
+    </if >
+    <if test="username!=null">
+      and u.name like concat('%',#{username},'%')
+    </if >
+    and activity_record.status = 0
   </select>
 </mapper>

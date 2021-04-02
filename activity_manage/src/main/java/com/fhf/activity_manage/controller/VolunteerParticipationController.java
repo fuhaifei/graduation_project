@@ -19,7 +19,7 @@ import java.util.List;
  * @Description:
  */
 @RestController
-@RequestMapping("/volunteer_participate")
+@RequestMapping("/activity_manage/volunteer_participate")
 public class VolunteerParticipationController {
     @Resource
     VolunteerParticipationService volunteerParticipationService;
@@ -63,5 +63,17 @@ public class VolunteerParticipationController {
     @PostMapping("/history_record")
     public List<ActivityRecordQueryResult> getHistory(@RequestBody ActivityRecordQuery activityRecordQuery){
         return volunteerParticipationService.getHistory(activityRecordQuery);
+    }
+
+    //志愿者查询当前申请记录
+    @PostMapping("/query_personal_apply")
+    public List<PersonalApplyDto> getPersonalApply(@RequestBody Long id){
+        return volunteerParticipationService.getAllPersonalApply(id);
+    }
+
+    //查询所有未评价历史记录
+    @PostMapping("/query_to_evaluation")
+    public List<RecordToEvaluation> queryToEvaluation(@RequestBody RecordToEvaluationQuery recordToEvaluationQuery){
+        return volunteerParticipationService.queryToEvaluation(recordToEvaluationQuery);
     }
 }

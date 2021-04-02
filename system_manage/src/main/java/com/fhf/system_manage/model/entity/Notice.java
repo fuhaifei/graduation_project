@@ -1,6 +1,7 @@
 package com.fhf.system_manage.model.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.Data;
 
@@ -44,7 +45,7 @@ public class Notice {
      * 创建时间
      */
 
-    private LocalDate publishTime;
+    private LocalDateTime publishTime;
 
     /**
      * 发布人

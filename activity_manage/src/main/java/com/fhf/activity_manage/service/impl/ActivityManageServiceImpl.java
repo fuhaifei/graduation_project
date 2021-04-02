@@ -1,5 +1,6 @@
 package com.fhf.activity_manage.service.impl;
 
+import com.fhf.activity_manage.mapper.ActivityApplyMapper;
 import com.fhf.activity_manage.mapper.ActivityRecordMapper;
 import com.fhf.activity_manage.mapper.PublishedActivityMapper;
 import com.fhf.activity_manage.mapper.VolunteerActivityMapper;
@@ -32,6 +33,8 @@ public class ActivityManageServiceImpl implements ActivityManageService {
     public PublishedActivityMapper publishedActivityMapper;
     @Resource
     public ActivityRecordMapper activityRecordMapper;
+    @Resource
+    public ActivityApplyMapper activityApplyMapper;
 
     public List<ActivityQueryResultDto> getActivity(ActivityQuery activityQuery){
         Example example = new Example(VolunteerActivity.class);
@@ -94,14 +97,26 @@ public class ActivityManageServiceImpl implements ActivityManageService {
         criteria.andEqualTo("status",0);
         int total = activityRecordMapper.selectCountByExample(example);
         if(total != 0){
-            return "评价完成才能结束活动";
+            System.out.println("未评价完成");
+            return "未评价完成";
         }
+        System.out.println("评价完成");
         //设置活动状态为已结束
         PublishedActivity publishedActivity = new PublishedActivity();
         publishedActivity.setPublishId(publishActivityId);
         publishedActivity.setStatus(2);
         publishedActivityMapper.updateByPrimaryKeySelective(publishedActivity);
         return null;
+    }
+
+    @Override
+    public List<AllActivityApplyDto> getAllActivityApply() {
+        return activityApplyMapper.getAllActivityApply();
+    }
+
+    @Override
+    public VolunteerDetailDto queryVolunteer(Long id) {
+        return activityRecordMapper.queryVolunteer(id);
     }
 
 }
