@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fhf.login_service.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.fhf.login_service.model.entity.User">
+    <!--@mbg.generated-->
+    <!--@Table testdatabase.`user`-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="profile_picture" jdbcType="VARCHAR" property="profilePicture" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="other" jdbcType="VARCHAR" property="other" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `password`, `name`, profile_picture, sex, birthday, tel, email, other, remark
+  </sql>
+
+  <select id="getAllPermission" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT url FROM user
+        LEFT OUTER JOIN user_role ur ON user.id = ur.id
+        LEFT OUTER JOIN role_resource rr on ur.id = rr.role_id
+        LEFT OUTER JOIN resource r on rr.res_id = r.id
+        where user.id = #{userId}
+  </select>
+</mapper>

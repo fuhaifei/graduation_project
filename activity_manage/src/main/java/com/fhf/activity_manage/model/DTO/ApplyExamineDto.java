@@ -1,0 +1,35 @@
+package com.fhf.activity_manage.model.DTO;
+
+import lombok.Data;
+
+/**
+ * Created with IDEA
+ * Copyright@ 东北大学 付海飞
+ *
+ * @Auther: 付海飞
+ * @Date: 2021/03/26/14:57
+ * @Description:
+ */
+@Data
+public class ApplyExamineDto {
+    /**
+     * 申请Id
+     */
+    private Long applyId;
+
+
+    /**
+     * 批准人
+     */
+    private Long approveBy;
+
+    /**
+     * 状态(是否已通过)
+     */
+    private Integer status;
+
+    /**
+     * 备注信息
+     */
+    private String note;
+}

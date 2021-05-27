@@ -1,6 +1,6 @@
 package com.fhf.activity_manage.service;
 
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.model.DTO.*;
 
 import java.util.List;
 
@@ -57,4 +57,17 @@ public interface VolunteerParticipationService {
      * @return 返回历史参与记录详细信息
      * */
     public  List<ActivityRecordQueryResult> getHistory(ActivityRecordQuery activityRecordQuery);
+
+    /**
+     * 查询个人所有历史志愿活动参与信息
+     * @param volunteerId 志愿者Id
+     * @return 个人申请信息结果
+     * */
+    public List<PersonalApplyDto> getAllPersonalApply(Long volunteerId);
+
+    /**
+     * 查询所有未评价历史志愿活动参与记录
+     * @return
+     * */
+    public List<RecordToEvaluation> queryToEvaluation(RecordToEvaluationQuery recordToEvaluationQuery);
 }

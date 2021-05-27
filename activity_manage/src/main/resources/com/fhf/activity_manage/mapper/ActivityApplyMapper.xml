@@ -16,4 +16,24 @@
     <!--@mbg.generated-->
     apply_id, apply_time, apply_for, apply_by, approve_by, `status`, note
   </sql>
+
+  <select id="getAllPersonalApply" resultType="com.fhf.activity_manage.model.DTO.PersonalApplyDto" parameterType="Long">
+    SELECT va.name,category,site,apply_time as applyTime,activity_apply.status as status,
+    activity_apply.note as note,u.name as approveBy,apply_by as applyBy
+    FROM activity_apply
+    LEFT JOIN published_activity pa on pa.publish_id = activity_apply.apply_for
+    LEFT JOIN volunteer_activity va on pa.belong_to = va.activity_id
+    LEFT JOIN USER u on  u.id = apply_by
+    WHERE apply_by = #{volunteerId}
+  </select>
+
+  <select id="getAllActivityApply" resultType="com.fhf.activity_manage.model.DTO.AllActivityApplyDto">
+    SELECT activity_apply.apply_id as applyId,va.name as name,category,apply_time as applyTime,
+           u.birthday,u.tel,u.name as userName,apply_by as applyBy
+    FROM activity_apply
+    LEFT JOIN published_activity pa on pa.publish_id = activity_apply.apply_for
+    LEFT JOIN volunteer_activity va on pa.belong_to = va.activity_id
+    LEFT JOIN USER u on  u.id = apply_by
+    WHERE activity_apply.status = 0
+  </select>
 </mapper>

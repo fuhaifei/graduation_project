@@ -3,7 +3,7 @@
 <mapper namespace="com.fhf.system_manage.mapper.RoleMapper">
   <resultMap id="BaseResultMap" type="com.fhf.system_manage.model.entity.Role">
     <!--@mbg.generated-->
-    <!--@Table `role`-->
+    <!--@Table testdatabase.`role`-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
@@ -13,73 +13,4 @@
     <!--@mbg.generated-->
     id, `name`, code, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from `role`
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    <!--@mbg.generated-->
-    delete from `role`
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.Role" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `role` (`name`, code, remark
-      )
-    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.Role" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `role`
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
-      </if>
-      <if test="code != null">
-        code,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null">
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fhf.system_manage.model.entity.Role">
-    <!--@mbg.generated-->
-    update `role`
-    <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null">
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fhf.system_manage.model.entity.Role">
-    <!--@mbg.generated-->
-    update `role`
-    set `name` = #{name,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 </mapper>

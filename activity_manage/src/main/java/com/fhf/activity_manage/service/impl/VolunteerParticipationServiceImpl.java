@@ -5,7 +5,7 @@ import com.fhf.activity_manage.mapper.ActivityRecordMapper;
 import com.fhf.activity_manage.mapper.PublishedActivityMapper;
 import com.fhf.activity_manage.model.entity.ActivityApply;
 import com.fhf.activity_manage.model.entity.ActivityRecord;
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.model.DTO.*;
 import com.fhf.activity_manage.model.entity.PublishedActivity;
 import com.fhf.activity_manage.service.VolunteerParticipationService;
 import com.fhf.activity_manage.util.BeanUtil;
@@ -36,6 +36,7 @@ public class VolunteerParticipationServiceImpl implements VolunteerParticipation
     public List<PublishActivityQueryResult> queryPublishActivities(PublishActivityQuery publishActivityQuery) {
         //查询未截止的报名活动
         publishActivityQuery.setIsEnd(0);
+
         return publishedActivityMapper.queryPublishActivity(publishActivityQuery);
     }
 
@@ -44,6 +45,7 @@ public class VolunteerParticipationServiceImpl implements VolunteerParticipation
         ActivityApply activityApply = BeanUtil.copyProperties(applyForActivityDto,ActivityApply.class);
         //设置状态未未评价
         activityApply.setStatus(0);
+        publishedActivityMapper.updateSignupNumber(activityApply.getApplyFor());
         return activityApplyMapper.insertSelective(activityApply);
     }
 
@@ -102,6 +104,16 @@ public class VolunteerParticipationServiceImpl implements VolunteerParticipation
     public List<ActivityRecordQueryResult> getHistory(ActivityRecordQuery activityRecordQuery) {
 
         return activityRecordMapper.getHistory(activityRecordQuery);
+    }
+
+    @Override
+    public List<PersonalApplyDto> getAllPersonalApply(Long volunteerId) {
+        return activityApplyMapper.getAllPersonalApply(volunteerId);
+    }
+
+    @Override
+    public List<RecordToEvaluation> queryToEvaluation(RecordToEvaluationQuery recordToEvaluationQuery) {
+        return activityRecordMapper.queryToEvaluation(recordToEvaluationQuery);
     }
 
 

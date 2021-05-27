@@ -3,7 +3,7 @@
 <mapper namespace="com.fhf.system_manage.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.fhf.system_manage.model.entity.User">
     <!--@mbg.generated-->
-    <!--@Table `user`-->
+    <!--@Table testdatabase.`user`-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -19,135 +19,24 @@
     <!--@mbg.generated-->
     id, `password`, `name`, profile_picture, sex, birthday, tel, email, other, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from `user`
-    where id = #{id,jdbcType=BIGINT}
+
+  <select id="getAllUser" parameterType="com.fhf.system_manage.model.dto.UserQueryDto" resultType="com.fhf.system_manage.model.dto.UserQueryResultDto">
+    SELECT user.id,r.name as role,password,user.name,user.profile_picture as profilePicture,
+    user.birthday,user.email,user.other,
+    user.sex,user.tel,user.remark
+    FROM user
+    LEFT OUTER JOIN  user_role ur ON user.id = ur.id
+    LEFT OUTER JOIN role r on ur.r_id = r.id
+    WHERE user.id &gt; -1
+    <if test="id != null">
+      AND user.id = #{id}
+    </if>
+    <if test="name != null">
+      AND user.name LIKE concat('%',#{name},'%')
+    </if>
+    <if test="role != null">
+      AND r.id = #{role}
+    </if>
+
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    <!--@mbg.generated-->
-    delete from `user`
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.User" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `user` (`password`, `name`, profile_picture, 
-      sex, birthday, tel, email, 
-      other, remark)
-    values (#{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{profilePicture,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=TINYINT}, #{birthday,jdbcType=DATE}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{other,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.User" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `user`
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="name != null">
-        `name`,
-      </if>
-      <if test="profilePicture != null">
-        profile_picture,
-      </if>
-      <if test="sex != null">
-        sex,
-      </if>
-      <if test="birthday != null">
-        birthday,
-      </if>
-      <if test="tel != null">
-        tel,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="other != null">
-        other,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="profilePicture != null">
-        #{profilePicture,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=DATE},
-      </if>
-      <if test="tel != null">
-        #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="other != null">
-        #{other,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fhf.system_manage.model.entity.User">
-    <!--@mbg.generated-->
-    update `user`
-    <set>
-      <if test="password != null">
-        `password` = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="profilePicture != null">
-        profile_picture = #{profilePicture,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=DATE},
-      </if>
-      <if test="tel != null">
-        tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="other != null">
-        other = #{other,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fhf.system_manage.model.entity.User">
-    <!--@mbg.generated-->
-    update `user`
-    set `password` = #{password,jdbcType=VARCHAR},
-      `name` = #{name,jdbcType=VARCHAR},
-      profile_picture = #{profilePicture,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=TINYINT},
-      birthday = #{birthday,jdbcType=DATE},
-      tel = #{tel,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      other = #{other,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 </mapper>

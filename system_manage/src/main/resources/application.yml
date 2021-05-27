@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: system_manage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdatabase?useUnicode=ture&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+server:
+  port: 8082
+logging:
+  level:
+    com.fhf.system_manage.mapper.*: debug

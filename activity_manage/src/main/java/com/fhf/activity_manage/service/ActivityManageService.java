@@ -1,5 +1,5 @@
 package com.fhf.activity_manage.service;
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.model.DTO.*;
 
 import java.util.List;
 
@@ -49,4 +49,14 @@ public interface ActivityManageService {
      *
      * */
     public String finishActivity(Long publishActivityId);
+
+    /**
+     * 查询所有报名申请
+     * */
+    public List<AllActivityApplyDto> getAllActivityApply();
+
+    /**
+     * 查询志愿者信息
+     * */
+    public VolunteerDetailDto queryVolunteer(Long id);
 }

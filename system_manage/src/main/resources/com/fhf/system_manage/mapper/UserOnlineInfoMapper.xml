@@ -3,7 +3,7 @@
 <mapper namespace="com.fhf.system_manage.mapper.UserOnlineInfoMapper">
   <resultMap id="BaseResultMap" type="com.fhf.system_manage.model.entity.UserOnlineInfo">
     <!--@mbg.generated-->
-    <!--@Table user_online_info-->
+    <!--@Table testdatabase.user_online_info-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="u_id" jdbcType="BIGINT" property="uId" />
     <result column="ip" jdbcType="VARCHAR" property="ip" />
@@ -16,105 +16,4 @@
     <!--@mbg.generated-->
     id, u_id, ip, online_time, offline_time, stop_time, `status`
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from user_online_info
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    <!--@mbg.generated-->
-    delete from user_online_info
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.UserOnlineInfo" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into user_online_info (u_id, ip, online_time, 
-      offline_time, stop_time, `status`
-      )
-    values (#{uId,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{onlineTime,jdbcType=TIMESTAMP}, 
-      #{offlineTime,jdbcType=TIMESTAMP}, #{stopTime,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}
-      )
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fhf.system_manage.model.entity.UserOnlineInfo" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into user_online_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        u_id,
-      </if>
-      <if test="ip != null">
-        ip,
-      </if>
-      <if test="onlineTime != null">
-        online_time,
-      </if>
-      <if test="offlineTime != null">
-        offline_time,
-      </if>
-      <if test="stopTime != null">
-        stop_time,
-      </if>
-      <if test="status != null">
-        `status`,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        #{uId,jdbcType=BIGINT},
-      </if>
-      <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="onlineTime != null">
-        #{onlineTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="offlineTime != null">
-        #{offlineTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="stopTime != null">
-        #{stopTime,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fhf.system_manage.model.entity.UserOnlineInfo">
-    <!--@mbg.generated-->
-    update user_online_info
-    <set>
-      <if test="uId != null">
-        u_id = #{uId,jdbcType=BIGINT},
-      </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="onlineTime != null">
-        online_time = #{onlineTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="offlineTime != null">
-        offline_time = #{offlineTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="stopTime != null">
-        stop_time = #{stopTime,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        `status` = #{status,jdbcType=TINYINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fhf.system_manage.model.entity.UserOnlineInfo">
-    <!--@mbg.generated-->
-    update user_online_info
-    set u_id = #{uId,jdbcType=BIGINT},
-      ip = #{ip,jdbcType=VARCHAR},
-      online_time = #{onlineTime,jdbcType=TIMESTAMP},
-      offline_time = #{offlineTime,jdbcType=TIMESTAMP},
-      stop_time = #{stopTime,jdbcType=INTEGER},
-      `status` = #{status,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 </mapper>

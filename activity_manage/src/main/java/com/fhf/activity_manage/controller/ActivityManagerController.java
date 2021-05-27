@@ -1,6 +1,7 @@
 package com.fhf.activity_manage.controller;
 
-import com.fhf.activity_manage.model.entity.DTO.*;
+import com.fhf.activity_manage.mapper.ActivityRecordMapper;
+import com.fhf.activity_manage.model.DTO.*;
 import com.fhf.activity_manage.service.ActivityManageService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,5 +58,21 @@ public class ActivityManagerController {
     @PostMapping("/finish_activity")
     public String finishActivity(@RequestBody Long publishActivityId){
         return activityManageService.finishActivity(publishActivityId);
+    }
+
+    /**
+     * 查询所有申请信息
+     * */
+    @PostMapping("/getAllApply")
+    public List<AllActivityApplyDto> getAllActivityApply(){
+        return activityManageService.getAllActivityApply();
+    }
+
+    /**
+     * 查询志愿者信息
+     * */
+    @PostMapping("/query_volunteer")
+    public VolunteerDetailDto query_volunteer(@RequestBody Long id){
+        return activityManageService.queryVolunteer(id);
     }
 }

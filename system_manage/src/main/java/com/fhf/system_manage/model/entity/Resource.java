@@ -1,217 +1,77 @@
 package com.fhf.system_manage.model.entity;
 
+import lombok.Data;
+
+import javax.persistence.Id;
+
 /**
  * Created with IDEA
  * Copyright@ 东北大学 付海飞
  * @Auther: 付海飞
- * @Date: 2021/03/22/20:13
+ * @Date: 2021/03/26/19:08
  * @Description: 
  */
-/**
-    * 资源
-    */
-public class Resource {
-    private Long id;
 
+/**
+ * 资源
+ */
+@Data
+public class Resource {
+    @Id
+    private Long id;
+    private String component;
     /**
-    * 资源名
-    */
+     * 资源名
+     */
     private String name;
 
     /**
-    * 编号
-    */
+     * 编号
+     */
     private String code;
 
     /**
-    * 父亲节点
-    */
+     * 父亲节点
+     */
     private Long parentId;
 
     /**
-    * 资源路径
-    */
+     * 资源路径
+     */
     private String url;
 
     /**
-    * 资源类型
-    */
+     * 资源路径
+     * */
+    private String path;
+
+    /**
+     * 资源类型
+     */
     private Byte resourceType;
 
     /**
-    * 打开图标
-    */
+     * 打开图标
+     */
     private String openImg;
 
     /**
-    * 关闭图标
-    */
+     * 关闭图标
+     */
     private String closeImg;
 
     /**
-    * 叶子节点
-    */
+     * 叶子节点
+     */
     private Byte leaf;
 
     /**
-    * 备注
-    */
+     * 备注
+     */
     private String remark;
 
     /**
-    * 状态
-    */
+     * 状态
+     */
     private Byte status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Byte getResourceType() {
-        return resourceType;
-    }
-
-    public void setResourceType(Byte resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    public String getOpenImg() {
-        return openImg;
-    }
-
-    public void setOpenImg(String openImg) {
-        this.openImg = openImg;
-    }
-
-    public String getCloseImg() {
-        return closeImg;
-    }
-
-    public void setCloseImg(String closeImg) {
-        this.closeImg = closeImg;
-    }
-
-    public Byte getLeaf() {
-        return leaf;
-    }
-
-    public void setLeaf(Byte leaf) {
-        this.leaf = leaf;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", code=").append(code);
-        sb.append(", parentId=").append(parentId);
-        sb.append(", url=").append(url);
-        sb.append(", resourceType=").append(resourceType);
-        sb.append(", openImg=").append(openImg);
-        sb.append(", closeImg=").append(closeImg);
-        sb.append(", leaf=").append(leaf);
-        sb.append(", remark=").append(remark);
-        sb.append(", status=").append(status);
-        sb.append("]");
-        return sb.toString();
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Resource other = (Resource) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
-            && (this.getParentId() == null ? other.getParentId() == null : this.getParentId().equals(other.getParentId()))
-            && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
-            && (this.getResourceType() == null ? other.getResourceType() == null : this.getResourceType().equals(other.getResourceType()))
-            && (this.getOpenImg() == null ? other.getOpenImg() == null : this.getOpenImg().equals(other.getOpenImg()))
-            && (this.getCloseImg() == null ? other.getCloseImg() == null : this.getCloseImg().equals(other.getCloseImg()))
-            && (this.getLeaf() == null ? other.getLeaf() == null : this.getLeaf().equals(other.getLeaf()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
-        result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
-        result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
-        result = prime * result + ((getResourceType() == null) ? 0 : getResourceType().hashCode());
-        result = prime * result + ((getOpenImg() == null) ? 0 : getOpenImg().hashCode());
-        result = prime * result + ((getCloseImg() == null) ? 0 : getCloseImg().hashCode());
-        result = prime * result + ((getLeaf() == null) ? 0 : getLeaf().hashCode());
-        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        return result;
-    }
 }

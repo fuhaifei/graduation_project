@@ -3,7 +3,7 @@
 <mapper namespace="com.fhf.system_manage.mapper.NoticeMapper">
   <resultMap id="BaseResultMap" type="com.fhf.system_manage.model.entity.Notice">
     <!--@mbg.generated-->
-    <!--@Table notice-->
+    <!--@Table testdatabase.notice-->
     <id column="notice_id" jdbcType="BIGINT" property="noticeId" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -15,101 +15,4 @@
     <!--@mbg.generated-->
     notice_id, `type`, title, content, publish_time, publish_by
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    <!--@mbg.generated-->
-    delete from notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.fhf.system_manage.model.entity.Notice">
-    <!--@mbg.generated-->
-    insert into notice (notice_id, `type`, title, 
-      content, publish_time, publish_by
-      )
-    values (#{noticeId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{publishTime,jdbcType=DATE}, #{publishBy,jdbcType=BIGINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fhf.system_manage.model.entity.Notice">
-    <!--@mbg.generated-->
-    insert into notice
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        notice_id,
-      </if>
-      <if test="type != null">
-        `type`,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="content != null">
-        content,
-      </if>
-      <if test="publishTime != null">
-        publish_time,
-      </if>
-      <if test="publishBy != null">
-        publish_by,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        #{noticeId,jdbcType=BIGINT},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="publishTime != null">
-        #{publishTime,jdbcType=DATE},
-      </if>
-      <if test="publishBy != null">
-        #{publishBy,jdbcType=BIGINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fhf.system_manage.model.entity.Notice">
-    <!--@mbg.generated-->
-    update notice
-    <set>
-      <if test="type != null">
-        `type` = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="publishTime != null">
-        publish_time = #{publishTime,jdbcType=DATE},
-      </if>
-      <if test="publishBy != null">
-        publish_by = #{publishBy,jdbcType=BIGINT},
-      </if>
-    </set>
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fhf.system_manage.model.entity.Notice">
-    <!--@mbg.generated-->
-    update notice
-    set `type` = #{type,jdbcType=INTEGER},
-      title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      publish_time = #{publishTime,jdbcType=DATE},
-      publish_by = #{publishBy,jdbcType=BIGINT}
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
 </mapper>
